@@ -1,5 +1,7 @@
 # Expose
 
+In this note I will present how I have completed Expose room on TryHackMe.
+
 ## Przykład ukrytego tekstu
 
 ### test
