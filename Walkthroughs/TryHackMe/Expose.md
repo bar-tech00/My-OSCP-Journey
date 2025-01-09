@@ -1,4 +1,4 @@
-# Expose
+## Expose
 
 # Przykład ukrytego tekstu
 
