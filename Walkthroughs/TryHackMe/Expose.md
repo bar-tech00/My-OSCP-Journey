@@ -1,6 +1,8 @@
-## Expose
+# Expose
 
-# Przykład ukrytego tekstu
+## Przykład ukrytego tekstu
+
+### test
 
 Kliknij, aby odsłonić ukryty tekst:
 
