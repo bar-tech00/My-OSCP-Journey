@@ -116,15 +116,100 @@ Also, there was some information on other URI’s most probably also accessible 
 | /upload-cv00101011/index.php  | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z
   |
 
+Firstly, I opened site `http://<IP>:1337//file1010111/index.php` 
+
+### SSC11 file1010111/index.php login page
+
+And on login page there I used provided password from sqlmap output. I wrote them down in table above.
+
+### SSC12 file1010111/index.php after login 
+
+Great, I got access. Not much on this website from the first look, but text `Parameter Fuzzing is also important :)  or Can you hide DOM elements?` gave me a little hint. I also checked source code of this website. This gave me another clue: `Hint: Try file or view as GET parameters?`. Firstly, I forgot what were GET parameters mentioned here. By searching the web I recalled that those GET parameters were the ones like on the example below:
+
+```
+https://<IP>:<port>/adminloginpage/index.php?username=<someusername>&password=<somepassword>
+
+```
+This is an example as no website should send credentials in clear text.
+
+So… Here I was provided with names of this parameters: `file` or `view`. Such parameters could be exploited by path traversal vulnerability. This was also the case here. I just need to create a good attack. I decided to go for /etc/passwd file.
+
+```
+http://<IP>:1337//file1010111/index.php?file=../../../../../etc/passwd
+```
+
+Fortunately there was no additional layer of security which would santize input. This got me content of a very important file on each computer. This will come in handy in the next step.
+
+### SSC13 path travelsal 
+
+Previously, I discovered another accessible site under `/upload-cv00101011/index.php`
+
+```
+http://<IP>:1337//upload-cv00101011/index.php
+```
+
+### SSC14 upload-cv00101011/index.php logn page
+
+There is information that the password is the name of the machine user starting with the letter “z”. Previously, I got the content of /etc/passwd file where all usernames are. I run through the /etc/passwd file and I found the user “zeamkish”. I tried typing it into form and this got us access to the portal.
+
+### SSC15 upload-cv00101011/index.php succesful login 
+
+
+There is a place to upload files. Only .png and .jpg can be uploaded. I tried uploading some .png file and received a response with text “File upload successfully! Maybe look in source code to see the path” and “in /upload_thm_1001 folder” so I checked this folder. 
+
+### SSC16 upload-cv00101011/index.php successful upload 
+
+
+If I could put a file with code which when executed will give me a shell then I would be very happy. I used php reverse shell code form PentestMonkey and saved on my machine. I changed IP and port to which my shell should connect to my IP and port 4444. Then I uploaded it onto the server on upload portal, then entered /upload_thm_1001 where I could execute my shell code by clicking on it. But firstly I set my listener on my host.
+
+```
+nc -nlvp 4444
+```
+
+When I clicked on my shell file it was executed on the side of webserver and it made a connection to my machine which got me a shell. I have looked around it a little bit and found two very important files. Account on which I currently was did not have perimission to view `flag.txt` file but I could see `ssh_creds.txt`.
+
+### SSC17 ssh creds
+
+Username: zeamkish
+
+Password: easytohack@123
+
+I connected to the victim machine by SSH by using the below command then typing password in a proper filed when asked.
+
+```
+ssh zeamkish@<IP>
+```
+
+### SSC18 SSH connection
+
+And I got ssh connection to a victim host on user account zeamkish. This allowed me to see contents of the file `flag.txt` in his user space `/home/zeamkish`.
 
 <details>
   <summary>User flag (CLICK TO SEE)</summary>
-THM{USER_FLAG_1231_EXPOSE}
+  ### SSC19 user flag
+  
+  THM{USER_FLAG_1231_EXPOSE}
 </details>
 
+Great. Now we need to escalate priviledeg to root to achieve the root flag. I poked around trying different metchods but the one correct here is a very simple one - SUID. Actually, it was the first method I checked but I did not read carefully enough what binaries had SUID set so I could exploit them. This oversight made me lose some time. Lesson for everybody - ready carefully, don’t just run through things. If I would spend 30 seconds more than I could save around 45 minutes. To check which files have SUID I used the command seen below.
+
+```
+find command for perm 4000
+```
+
+### SSC20 SUID binaries
+
+The one that look out of place is /usr/bin/find binary. It can be used to escalate privilege. I used GTFObins to achieve that. There are many instruction how to use different binaries that could be on victim machine which could be used to escalate privileges. Back to /usr/bin/find. By using below command:
+
+```
+./find . -exec /bin/sh -p \; -quit
+```
+
+I achieved root privilege. Then I went straight for the flag in /root directory.
 
 
 <details>
   <summary>Root flag (CLICK TO SEE)</summary>
-THM{ROOT_EXPOSED_1001}
+  ### SSC21 root flag
+  THM{ROOT_EXPOSED_1001}
 </details>
