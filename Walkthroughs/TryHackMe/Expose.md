@@ -51,8 +51,32 @@ gobuster dir -u http://10.10.113.126:1337 -w /usr/share/wordlists/dirb/common.tx
 
 `-w` - specifies a worldlist that will be used during enumeration. I used the one available on AttackBox called common.txt because, as it says in it’s name, there are common names.
 
+### SSC5 gobuster common.txt
 
+I have discovered additional resources which can be accessible. I have focused on two of those:
 
+`/admin`
+
+`/phpmyadmin`
+
+Firstly, /phpmyadmin was a login page to database. I tried some bruteforcing but that led my nowhere.
+
+### SSC6 phpmyadmin login page
+
+I decided to switch my focus onto second one of interest - `/admin`
+
+### SSC6 /admin login page
+
+The “continue” button on a page was not clickable. Additionally, note “Is this the right admin portal?” was a hint to look for something else.
+I decided to go back a little and conduct another enumeration on this website. I used previous command but changed it just a little bit. Instead of using wordlist “common.txt” which is, so to speak, medium size, I used “big.txt” form the same location on AttackBox. It is bigger then “common.txt”
+
+```
+gobuster dir -u http://10.10.113.126:1337 -w /usr/share/wordlists/dirb/big.txt
+```
+
+I won’t explain what each of it means as it was explained above in great detail.
+
+### SSC7 gobuster big.txt
 
 
 
