@@ -6,6 +6,7 @@ Firstly, I started by scanning the host with nmap. Right away I scanned every po
 ```
 nmap -p- 10.10.113.128
 ```
+`-p-` - will scan all TCP ports
 
 
 <details>
