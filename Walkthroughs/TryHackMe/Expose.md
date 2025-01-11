@@ -9,10 +9,12 @@ In this note I will present how I have completed Expose room on TryHackMe.
 Kliknij, aby odsłonić ukryty tekst:
 
 <details>
-  <summary>Odsłoń tekst</summary>
-  
-  Tutaj znajduje się ukryty tekst. Możesz umieścić tu dodatkowe instrukcje, flagi lub inne informacje.
+  <summary>User flag (CLICK TO SEE)</summary>
+THM{USER_FLAG_1231_EXPOSE}
 
-  Możesz także wstawiać kod:
-  ```bash
-  echo "To przykład kodu w ukrytym fragmencie."
+#########
+
+<details>
+  <summary>Root flag (CLICK TO SEE)</summary>
+THM{ROOT_EXPOSED_1001}
+  
