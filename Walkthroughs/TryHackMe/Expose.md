@@ -78,6 +78,43 @@ I won’t explain what each of it means as it was explained above in great detai
 
 ### SSC7 gobuster big.txt
 
+As seen above, I have discovered another directory called `/admin_101` which was not found by using smaller dictionary. I entered this location on a webserver and this was a right step towards rooting this machine.
+
+```
+http://<IP>:1337/admin_101
+```
+
+### SSC8 /admin_101 login portal
+
+In the login form an email was provided: hacker@root.thm. This time the button “Continue” was clickable. I tried using some common passwords but this was not it. I decided to peep on the request that is being sent to the server and its response.
+
+In the response a SQL query can be seen. I tired to use some bruteforcing using BurpSuite (can be also achived by. ex. hydra) but no success there. I decided on using sqlmap. I tried using sqlmap in different ways, but the one below worked. Firstly, I saved HTTP request which would be send to the server in a file I called `req`.
+
+### SSC9 req file HTTP request
+
+Then I used sqlmap command seen below.
+
+```
+sqlmap -r req -dump
+```
+
+`-r` -
+`-dump` - 
+
+### SSC10 sqlmap output
+
+By doing this password for hacker@root.thm was discovered which is VeryDifficultPassword!!#@#@!#!@#1231.
+
+Also, there was some information on other URI’s most probably also accessible on our webserver.
+/file1010111/index.php       | 1    | 69c66901194a6486176e81f5945b8929 (easytohack)
+
+/upload-cv00101011/index.php | 3    | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z
+
+| url  | password |
+| ------------- | ------------- |
+| /file1010111/index.php  | 69c66901194a6486176e81f5945b8929 (easytohack)  |
+| /upload-cv00101011/index.php  | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z
+  |
 
 
 <details>
