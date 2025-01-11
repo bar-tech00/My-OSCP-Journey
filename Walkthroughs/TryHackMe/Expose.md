@@ -11,7 +11,7 @@ Kliknij, aby odsłonić ukryty tekst:
 <details>
   <summary>User flag (CLICK TO SEE)</summary>
 THM{USER_FLAG_1231_EXPOSE}
-
+</details>
 #########
 
 <details>
