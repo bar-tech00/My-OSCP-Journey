@@ -52,7 +52,7 @@ gobuster dir -u http://10.10.78.204:1337 -w /usr/share/wordlists/dirb/common.txt
 
 `-w` - specifies a worldlist that will be used during enumeration. I used the one available on AttackBox called common.txt because, as it says in it’s name, there are common names.
 
-### SSC5 gobuster common.txt
+![5. gobuster common](/images/TryHackMe/Expose/5_gobuster_common.png)
 
 I have discovered additional resources which can be accessible. I have focused on two of those:
 
