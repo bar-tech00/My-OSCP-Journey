@@ -13,7 +13,7 @@ nmap -p- 10.10.78.204
 ```
 `-p-` - will scan all TCP ports
 
-![/images/nmap_first.png]
+![FIRST NMAP SCAN](/images/nmap_first.png)
 
 I have discovered 5 opened ports. I will focus on them by specifying them in my next nmap command. Also, I will add two other options -sV and -sC.
 ```
