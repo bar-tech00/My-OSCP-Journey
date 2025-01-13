@@ -36,7 +36,7 @@ I got some additional information on previosly discovered services running on a 
 
 It is empty. I checked source code of a webpage.
 
-![4. Main expose site source code](/images/TryHackMe/Expose/4_expose_main_site_source_code.png 
+![4. Main expose site source code](/images/TryHackMe/Expose/4_expose_main_site_source_code.png)
 
 But no additional info to be found there.
 
