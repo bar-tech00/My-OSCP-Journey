@@ -122,7 +122,7 @@ Firstly, I opened site `http://10.10.78.204:1337//file1010111/index.php`
 
 ### SSC11 file1010111/index.php login page
 
-And on login page there I used provided password from sqlmap output. I wrote them down in table above.
+And on login page there I used provided password from sqlmap output for this login page. I wrote them down in table above.
 
 ### SSC12 file1010111/index.php after login 
 
