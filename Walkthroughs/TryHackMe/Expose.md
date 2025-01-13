@@ -32,7 +32,7 @@ I got some additional information on previosly discovered services running on a 
 
 ```http://10.10.78.204:1337```
 
-### SSC3 "exposed webpage"
+![3. Main expose website](/images/TryHackMe/Expose/3_expose_main_website.png)
 
 It is empty. I checked source code of a webpage.
 
