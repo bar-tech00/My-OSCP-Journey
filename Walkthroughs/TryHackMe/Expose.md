@@ -62,11 +62,11 @@ I have discovered additional resources which can be accessible. I have focused o
 
 Firstly, /phpmyadmin was a login page to database. I tried some bruteforcing but that led my nowhere.
 
-![PhpMyAdmin login page](/images/TryHackMe/Expose/6_phpmyadmin_login_page.png)
+![6. PhpMyAdmin login page](/images/TryHackMe/Expose/6_phpmyadmin_login_page.png)
 
 I decided to switch my focus onto second one of interest - `/admin`
 
-### SSC6 /admin login page
+![7. Admin login page](/images/TryHackMe/Expose/7_admin_login_page.png)
 
 The “continue” button on a page was not clickable. Additionally, note “Is this the right admin portal?” was a hint to look for something else.
 I decided to go back a little and conduct another enumeration on this website. I used previous command but changed it just a little bit. Instead of using wordlist “common.txt” which is, so to speak, medium size, I used “big.txt” form the same location on AttackBox. It is bigger then “common.txt”
@@ -77,7 +77,7 @@ gobuster dir -u http:/10.10.78.204:1337 -w /usr/share/wordlists/dirb/big.txt
 
 I won’t explain what each of it means as it was explained above in great detail.
 
-### SSC7 gobuster big.txt
+![8. gobuster big](/images/TryHackMe/Expose/8_gobuster_big.png)
 
 As seen above, I have discovered another directory called `/admin_101` which was not found by using smaller dictionary. I entered this location on a webserver and this was a right step towards rooting this machine.
 
@@ -85,11 +85,11 @@ As seen above, I have discovered another directory called `/admin_101` which was
 http://10.10.78.204:1337/admin_101
 ```
 
-### SSC8 /admin_101 login portal
+![9. admin_101 login page](/images/TryHackMe/Expose/9_admin_101_login_page.png)
 
 In the login form an email was provided: hacker@root.thm. This time the button “Continue” was clickable. I tried using some common passwords but this was not it. I decided to peep on the request that is being sent to the server and its response.
 
-### SSC9 sql_query in response
+![10. admin_101 response query](/images/TryHackMe/Expose/10_admin_101_response_query.png)
 
 In the response a SQL query can be seen. I tired to use some bruteforcing using BurpSuite (can be also achived by. ex. hydra) but no success there. I decided on using sqlmap. I tried using sqlmap in different ways, but the one below worked. Firstly, I saved HTTP request which would be send to the server in a file I called `req`. The request I'm talking about is on the left side of the upper image.
 
@@ -103,7 +103,7 @@ sqlmap -r req -dump
 `-r` -
 `-dump` - 
 
-### SSC10 sqlmap output
+![11 sqlmap output](/images/TryHackMe/Expose/11_sqlmap_output.png)
 
 By doing this password for hacker@root.thm was discovered which is VeryDifficultPassword!!#@#@!#!@#1231.
 
@@ -116,11 +116,11 @@ Also, there was some information on other URI’s most probably also accessible 
 
 Firstly, I opened site `http://10.10.78.204:1337/file1010111/index.php` 
 
-### SSC11 file1010111/index.php login page
+![12 file1010111 login page](/images/TryHackMe/Expose/12_file1010111__login_page.png)
 
 And on login page there I used provided password from sqlmap output for this login page. I wrote them down in table above.
 
-### SSC12 file1010111/index.php after login 
+![13 file1010111 successful login](/images/TryHackMe/Expose/13_file1010111__successful_login.png)
 
 Great, I got access. Not much on this website from the first look, but text `Parameter Fuzzing is also important :)  or Can you hide DOM elements?` gave me a little hint. I also checked source code of this website. This gave me another clue: `Hint: Try file or view as GET parameters?`. Firstly, I forgot what were GET parameters mentioned here. By searching the web I recalled that those GET parameters were the ones like on the example below:
 
@@ -139,7 +139,7 @@ I was asked to provide `easytohack` password again.
 
 Fortunately there was no additional layer of security which would santize input. This got me content of a very important file on each computer. This will come in handy in the next step.
 
-### SSC13 path travelsal 
+![14 file1010111 path traversal](/images/TryHackMe/Expose/14_file1010111_path_traversal.png)
 
 Previously, I discovered another accessible site under `/upload-cv00101011/index.php`
 
@@ -147,27 +147,37 @@ Previously, I discovered another accessible site under `/upload-cv00101011/index
 http://10.10.78.204:1337/upload-cv00101011/index.php
 ```
 
-### SSC14 upload-cv00101011/index.php logn page
+![15. upload_cv00101011 login page](/images/TryHackMe/Expose/15_upload_cv00101011_login_page.png)
 
-There is information that the password is the name of the machine user starting with the letter “z”. Previously, I got the content of /etc/passwd file where all usernames are. I run through the /etc/passwd file and I found the user “zeamkish”. I tried typing it into form and this got us access to the portal.
+There is information that the password is the name of the machine user starting with the letter “z”. Previously, I got the content of /etc/passwd file where all usernames are. I run through the /etc/passwd file I disovered before and I found the user “zeamkish”. I tried typing it into form and this got us access to the portal.
 
-### SSC15 upload-cv00101011/index.php succesful login 
-
-
-There is a place to upload files. Only .png and .jpg can be uploaded. I tried uploading some .png file and received a response with text “File upload successfully! Maybe look in source code to see the path” and “in /upload_thm_1001 folder” so I checked this folder. 
-
-### SSC16 upload-cv00101011/index.php successful upload 
+![16. upload_cv00101011 successful login](/images/TryHackMe/Expose/16_upload_cv00101011_successfull_login.png)
 
 
-If I could put a file with code which when executed will give me a shell then I would be very happy. I used php reverse shell code form PentestMonkey and saved on my machine. I changed IP and port to which my shell should connect to my IP and port 4444. Then I uploaded it onto the server on upload portal, then entered /upload_thm_1001 where I could execute my shell code by clicking on it. But firstly I set my listener on my host.
+There is a place to upload files. Only .png and .jpg can be uploaded. I tried uploading some .png file. I captured a request and response with Burp. As seen below I received a response with text “File upload successfully! Maybe look in source code to see the path” and “in /upload_thm_1001 folder” so I checked this folder. 
+
+![17. upload_thm_1001 folder burp request capture](/images/TryHackMe/Expose/17_upload_thm_1001_burp_request_capture.png)
+
+As said in response after uploading a file I checked folder `/upload_thm_1001 folder`. I can see exacly that my file was uploded here.
+
+![18. upload_thm_1001 folder with my file](/images/TryHackMe/Expose/18_upload_thm_1001_folder_with_my_file.png)
+
+
+If I could put a file with code which when executed will give me a shell then I would be very happy. I used php reverse shell code form PentestMonkey and saved on my machine in `file.png`. I changed IP and port to which my shell should connect to to my IP and port 4444. I set up Burp to capture request which should be send to the server when uploading a file. Then I uploaded my `shell.png` onto the server on upload portal. In a reqest before it was send I changed a file format of my file from `.png` to `.php`. After change I sent request through.
+
+![19. uploading shell and changing format with burp](/images/TryHackMe/Expose/19_uploading_shell_format_change_with_burp)
+
+Then I entered `/upload_thm_1001` where I could see my shell. Firstly, I set up listener on my host. I clicked `shell.php` to execute my shell code.
 
 ```
 nc -nlvp 4444
 ```
 
+![20. shell on webserver](/images/TryHackMe/Expose/20_shell_on_webserver.png)
+
 When I clicked on my shell file it was executed on the side of webserver and it made a connection to my machine which got me a shell. I have looked around it a little bit and found two very important files. Account on which I currently was did not have perimission to view `flag.txt` file but I could see `ssh_creds.txt`.
 
-### SSC17 ssh creds
+![21. ]
 
 Username: zeamkish
 
