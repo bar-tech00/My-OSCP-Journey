@@ -139,6 +139,7 @@ So… Here I was provided with names of this parameters: `file` or `view`. Such 
 ```
 http://10.10.78.204:1337//file1010111/index.php?file=../../../../../etc/passwd
 ```
+I was asked to provide `easytohack` password again.
 
 Fortunately there was no additional layer of security which would santize input. This got me content of a very important file on each computer. This will come in handy in the next step.
 
