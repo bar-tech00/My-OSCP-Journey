@@ -72,7 +72,7 @@ The “continue” button on a page was not clickable. Additionally, note “Is 
 I decided to go back a little and conduct another enumeration on this website. I used previous command but changed it just a little bit. Instead of using wordlist “common.txt” which is, so to speak, medium size, I used “big.txt” form the same location on AttackBox. It is bigger then “common.txt”
 
 ```
-gobuster dir -u http://10.10.78.204:1337 -w /usr/share/wordlists/dirb/big.txt
+gobuster dir -u http:/10.10.78.204:1337 -w /usr/share/wordlists/dirb/big.txt
 ```
 
 I won’t explain what each of it means as it was explained above in great detail.
