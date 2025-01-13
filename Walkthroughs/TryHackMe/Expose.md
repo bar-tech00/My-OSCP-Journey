@@ -17,7 +17,7 @@ nmap -p- 10.10.78.204
 
 I have discovered 5 opened ports. I will focus on them by specifying them in my next nmap command. Also, I will add two other options -sV and -sC.
 ```
-nmap -p 21,22,53,1337,1883 -sV -sC 10.10.113.128
+nmap -p 21,22,53,1337,1883 -sV -sC 10.10.78.204
 ```
 
 `-p <port1>,<port2>,<port n>` - will specify which port or ports we want to specify durning the scan
@@ -30,7 +30,7 @@ nmap -p 21,22,53,1337,1883 -sV -sC 10.10.113.128
 
 I got some additional information on previosly discovered services running on a victims machine. I have played around with FTP on port 21 for a while but this led me to nowhere. Instead I have focused on port 1337. As seen in nmap scan this is http server with page title “EXPOSED”. I opened this webpage by typing IP of a victim host followed by port on which webpage is hosted on in address bar. I used Mozzila FireFox browser available on AttackBox.
 
-```http://<IP>:1337```
+```http://10.10.78.204:1337```
 
 ### SSC3 "exposed webpage"
 
@@ -43,7 +43,7 @@ But no additional info to be found there.
 There could be some additional resources like directories and files hosted there. There is no link to them but still they could be there. I need to try to find them. Great tool to search for other directories on a webpage is gobuster. I used below command for this task.
 
 ```
-gobuster dir -u http://10.10.113.126:1337 -w /usr/share/wordlists/dirb/common.txt
+gobuster dir -u http://10.10.78.204:1337 -w /usr/share/wordlists/dirb/common.txt
 ```
 
 `dir` - Uses directory/file enumeration mode, typical option for enumerating other resources on a webpage
@@ -72,7 +72,7 @@ The “continue” button on a page was not clickable. Additionally, note “Is 
 I decided to go back a little and conduct another enumeration on this website. I used previous command but changed it just a little bit. Instead of using wordlist “common.txt” which is, so to speak, medium size, I used “big.txt” form the same location on AttackBox. It is bigger then “common.txt”
 
 ```
-gobuster dir -u http://10.10.113.126:1337 -w /usr/share/wordlists/dirb/big.txt
+gobuster dir -u http://10.10.78.204:1337 -w /usr/share/wordlists/dirb/big.txt
 ```
 
 I won’t explain what each of it means as it was explained above in great detail.
@@ -82,7 +82,7 @@ I won’t explain what each of it means as it was explained above in great detai
 As seen above, I have discovered another directory called `/admin_101` which was not found by using smaller dictionary. I entered this location on a webserver and this was a right step towards rooting this machine.
 
 ```
-http://<IP>:1337/admin_101
+http://10.10.78.204:1337/admin_101
 ```
 
 ### SSC8 /admin_101 login portal
@@ -117,7 +117,7 @@ Also, there was some information on other URI’s most probably also accessible 
 | /upload-cv00101011/index.php  | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z
   |
 
-Firstly, I opened site `http://<IP>:1337//file1010111/index.php` 
+Firstly, I opened site `http://10.10.78.204:1337//file1010111/index.php` 
 
 ### SSC11 file1010111/index.php login page
 
@@ -136,7 +136,7 @@ This is an example as no website should send credentials in clear text.
 So… Here I was provided with names of this parameters: `file` or `view`. Such parameters could be exploited by path traversal vulnerability. This was also the case here. I just need to create a good attack. I decided to go for /etc/passwd file.
 
 ```
-http://<IP>:1337//file1010111/index.php?file=../../../../../etc/passwd
+http://10.10.78.204:1337//file1010111/index.php?file=../../../../../etc/passwd
 ```
 
 Fortunately there was no additional layer of security which would santize input. This got me content of a very important file on each computer. This will come in handy in the next step.
@@ -146,7 +146,7 @@ Fortunately there was no additional layer of security which would santize input.
 Previously, I discovered another accessible site under `/upload-cv00101011/index.php`
 
 ```
-http://<IP>:1337//upload-cv00101011/index.php
+http://10.10.78.204:1337//upload-cv00101011/index.php
 ```
 
 ### SSC14 upload-cv00101011/index.php logn page
@@ -178,7 +178,7 @@ Password: easytohack@123
 I connected to the victim machine by SSH by using the below command then typing password in a proper filed when asked.
 
 ```
-ssh zeamkish@<IP>
+ssh zeamkish@10.10.78.204
 ```
 
 ### SSC18 SSH connection
@@ -195,7 +195,7 @@ And I got ssh connection to a victim host on user account zeamkish. This allowed
 Great. Now we need to escalate priviledeg to root to achieve the root flag. I poked around trying different metchods but the one correct here is a very simple one - SUID. Actually, it was the first method I checked but I did not read carefully enough what binaries had SUID set so I could exploit them. This oversight made me lose some time. Lesson for everybody - ready carefully, don’t just run through things. If I would spend 30 seconds more than I could save around 45 minutes. To check which files have SUID I used the command seen below.
 
 ```
-find command for perm 4000
+find command for perm 4000 TO DO
 ```
 
 ### SSC20 SUID binaries
