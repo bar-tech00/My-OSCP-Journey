@@ -91,7 +91,7 @@ In the login form an email was provided: hacker@root.thm. This time the button â
 
 ### SSC8,5 sql_query in response
 
-In the response a SQL query can be seen. I tired to use some bruteforcing using BurpSuite (can be also achived by. ex. hydra) but no success there. I decided on using sqlmap. I tried using sqlmap in different ways, but the one below worked. Firstly, I saved HTTP request which would be send to the server in a file I called `req`.
+In the response a SQL query can be seen. I tired to use some bruteforcing using BurpSuite (can be also achived by. ex. hydra) but no success there. I decided on using sqlmap. I tried using sqlmap in different ways, but the one below worked. Firstly, I saved HTTP request which would be send to the server in a file I called `req`. The request I'm talking about is on the left side of the upper image.
 
 ### SSC9 req file HTTP request
 
