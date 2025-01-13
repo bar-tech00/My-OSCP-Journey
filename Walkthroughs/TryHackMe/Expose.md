@@ -19,7 +19,7 @@ I have discovered 5 opened ports. I will focus on them by specifying them in my 
 nmap -p 21,22,53,1337,1883 -sV -sC 10.10.113.128
 ```
 
-`-p - \<port1\>,\<port2\>,\<port n\>` - will specify which port or ports we want to specify durning the scan
+`-p - <port1>,<port2>,<port n>` - will specify which port or ports we want to specify durning the scan
 
 `-sV` - Probe open ports to determine service/version info
 
