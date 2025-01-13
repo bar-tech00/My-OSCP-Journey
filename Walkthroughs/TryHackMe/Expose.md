@@ -94,7 +94,7 @@ In the login form an email was provided: hacker@root.thm. This time the button â
 In the response a SQL query can be seen. I tired to use some bruteforcing using BurpSuite (can be also achived by. ex. hydra) but no success there. I decided on using sqlmap. I tried using sqlmap in different ways, but the one below worked. Firstly, I saved HTTP request which would be send to the server in a file I called `req`. The request I'm talking about is on the left side of the upper image.
 
 
-Then I used sqlmap command seen below.
+Then I used sqlmap command seen below. It asked me couple times to choose between different options (yes/no) and after attack is completed I have received below output.
 
 ```
 sqlmap -r req -dump
