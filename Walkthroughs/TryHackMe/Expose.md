@@ -220,4 +220,4 @@ Root flag:
 
 THM{ROOT_EXPOSED_1001}
 
-![25. user flag](/images/TryHackMe/Expose/25_root_flag.png)
+![25. root flag](/images/TryHackMe/Expose/25_root_flag.png)
