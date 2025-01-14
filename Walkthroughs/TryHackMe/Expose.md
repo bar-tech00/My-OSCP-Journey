@@ -1,4 +1,4 @@
-# Expose Walkthrough
+# Expose CTF Walkthrough
 
 In this note I will present how I have completed Expose room on TryHackMe.
 
