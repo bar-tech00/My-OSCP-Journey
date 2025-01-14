@@ -59,7 +59,7 @@ I have discovered additional resources which can be accessible. I have focused o
 * `/admin`
 * `/phpmyadmin`
 
-Firstly, /phpmyadmin was a login page to database. I tried some bruteforcing but that led my nowhere.
+Firstly, `/phpmyadmin` was a login page to database. I tried some bruteforcing but that led my nowhere.
 
 ![6. PhpMyAdmin login page](/images/TryHackMe/Expose/6_phpmyadmin_login_page.png)
 
