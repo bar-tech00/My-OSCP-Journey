@@ -167,7 +167,7 @@ If I could put a file with code which when executed will give me a shell then I 
 
 ![19. uploading shell and changing format with burp](/images/TryHackMe/Expose/19_uploading_shell_format_change_with_burp)
 
-Then I entered `/upload_thm_1001` where I could see my shell. Firstly, I set up listener on my host. I clicked `shell.php` to execute my shell code.
+Then I entered `/upload_thm_1001` where I could see my shell. Firstly, I set up listener on my host before I execute my shellcode so the connection could be made.
 
 ```
 nc -nlvp 4444
@@ -175,9 +175,9 @@ nc -nlvp 4444
 
 ![20. shell on webserver](/images/TryHackMe/Expose/20_shell_on_webserver.png)
 
-When I clicked on my shell file it was executed on the side of webserver and it made a connection to my machine which got me a shell. I have looked around it a little bit and found two very important files. Account on which I currently was did not have perimission to view `flag.txt` file but I could see `ssh_creds.txt`.
+When I clicked on file containing my reverse shell it was executed on the side of the webserver and it made a connection back to my machine which got me a shell. I have looked around it a little bit and found two very important files in `/home/zeamkish/` directory. Account on which I currently was did not have perimission to view `flag.txt` file but I could see `ssh_creds.txt`.
 
-![21. ]
+![21. ssh creds on victims machine](/images/TryHackMe/Expose/21_ssh_creds.png)
 
 Username: zeamkish
 
@@ -189,13 +189,13 @@ I connected to the victim machine by SSH by using the below command then typing 
 ssh zeamkish@10.10.78.204
 ```
 
-### SSC18 SSH connection
+![22. ssh login](/images/TryHackMe/Expose/22_ssh_login.png)
 
 And I got ssh connection to a victim host on user account zeamkish. This allowed me to see contents of the file `flag.txt` in his user space `/home/zeamkish`.
 
 <details>
   <summary>User flag (CLICK TO SEE)</summary>
-  ### SSC19 user flag
+  ![23. user flag](/images/TryHackMe/Expose/23_user_flag.png)
   
   THM{USER_FLAG_1231_EXPOSE}
 </details>
