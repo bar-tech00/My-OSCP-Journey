@@ -162,7 +162,7 @@ As said in response after uploading a file I checked folder `/upload_thm_1001 fo
 ![18. upload_thm_1001 folder with my file](/images/TryHackMe/Expose/18_upload_thm_1001_folder_with_my_file.png)
 
 
-If I could put a file with code which when executed will give me a shell then I would be very happy. I used php reverse shell code form PentestMonkey and saved on my machine in `file.png`. I changed IP and port to which my shell should connect to to my IP and port 4444. I set up Burp to capture request which should be send to the server when uploading a file. Then I uploaded my `shell.png` onto the server on upload portal. In a reqest before it was send I changed a file format of my file from `.png` to `.php`. After change I sent request through.
+If I could put a file with code which when executed will give me a shell then I would be very happy. I used php reverse shell code form [PentestMonkey](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) and saved on my machine in `file.png`. I changed IP and port to which my shell should connect to to my IP and port 4444. I set up Burp to capture request which should be send to the server when uploading a file. Then I uploaded my `shell.png` onto the server on upload portal. In a reqest before it was send I changed a file format of my file from `.png` to `.php`. After change I sent request through.
 
 ![19. uploading shell and changing format with burp](/images/TryHackMe/Expose/19_uploading_shell_format_change_with_burp)
 
