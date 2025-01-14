@@ -203,7 +203,7 @@ THM{ROOT_EXPOSED_1001}
 Great. Now we need to escalate priviledeg to root to achieve the root flag. I poked around trying different metchods but the one correct here is a very simple one - SUID. Actually, it was the first method I checked but I did not read carefully enough what binaries had SUID set so I could exploit them. This oversight made me lose some time. Lesson for everybody - ready carefully, don’t just run through things. If I would spend 30 seconds more than I could save around 45 minutes. To check which files have SUID I used the command seen below.
 
 ```
-find command for perm 4000 TO DO
+find / -type f -perm -04000 -ls 2>/dev/null
 ```
 
 ![24. SUID binaries](/images/TryHackMe/Expose/24_suid_binaries.png)
