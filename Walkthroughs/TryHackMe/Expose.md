@@ -2,8 +2,6 @@
 
 In this note I will present how I have completed Expose room on TryHackMe.
 
-AttackBox: 10.10.242.178
-
 Victim: 10.10.195.148
 
 
