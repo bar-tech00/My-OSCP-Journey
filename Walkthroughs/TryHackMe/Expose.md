@@ -193,12 +193,11 @@ ssh zeamkish@10.10.78.204
 
 And I got ssh connection to a victim host on user account zeamkish. This allowed me to see contents of the file `flag.txt` in his user space `/home/zeamkish`.
 
-<details>
-  <summary>User flag (CLICK TO SEE)</summary>
-  ![23. user flag](/images/TryHackMe/Expose/23_user_flag.png)
-  
-  THM{USER_FLAG_1231_EXPOSE}
-</details>
+User flag:
+
+THM{ROOT_EXPOSED_1001}
+
+![23. user flag](/images/TryHackMe/Expose/23_user_flag.png)
 
 Great. Now we need to escalate priviledeg to root to achieve the root flag. I poked around trying different metchods but the one correct here is a very simple one - SUID. Actually, it was the first method I checked but I did not read carefully enough what binaries had SUID set so I could exploit them. This oversight made me lose some time. Lesson for everybody - ready carefully, don’t just run through things. If I would spend 30 seconds more than I could save around 45 minutes. To check which files have SUID I used the command seen below.
 
@@ -206,7 +205,7 @@ Great. Now we need to escalate priviledeg to root to achieve the root flag. I po
 find command for perm 4000 TO DO
 ```
 
-### SSC20 SUID binaries
+![24. SUID binaries](/images/TryHackMe/Expose/24_suid_binaries.png)
 
 The one that look out of place is /usr/bin/find binary. It can be used to escalate privilege. I used GTFObins to achieve that. There are many instruction how to use different binaries that could be on victim machine which could be used to escalate privileges. Back to /usr/bin/find. By using below command:
 
@@ -217,8 +216,8 @@ The one that look out of place is /usr/bin/find binary. It can be used to escala
 I achieved root privilege. Then I went straight for the flag in /root directory.
 
 
-<details>
-  <summary>Root flag (CLICK TO SEE)</summary>
-  ### SSC21 root flag
-  THM{ROOT_EXPOSED_1001}
-</details>
+Root flag:
+
+THM{ROOT_EXPOSED_1001}
+
+![25. user flag](/images/TryHackMe/Expose/25_root_flag.png)
