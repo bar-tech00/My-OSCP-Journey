@@ -15,7 +15,7 @@ nmap -p- 10.10.78.204
 
 ![1. First nmap scan](/images/TryHackMe/Expose/1_nmap_first.png)
 
-I have discovered 5 opened ports. I will focus on them by specifying them in my next nmap command. Also, I will add two other options -sV and -sC.
+I have discovered 5 opened ports. I will focus on them by specifying them in my next nmap command. Also, I will add two other options `-sV` and `-sC`.
 ```
 nmap -p 21,22,53,1337,1883 -sV -sC 10.10.78.204
 ```
@@ -24,7 +24,7 @@ nmap -p 21,22,53,1337,1883 -sV -sC 10.10.78.204
 
 `-sV` - Probe open ports to determine service/version info.
 
-`-sC` - Performs a script scan using the default set of scripts. It is equivalent to --script=default. Some of the scripts in this category are considered intrusive and should not be run against a target network without permission.
+`-sC` - Performs a script scan using the default set of scripts. It is equivalent to `--script=default`. Some of the scripts in this category are considered intrusive and should not be run against a target network without permission.
 
 ![2. Second nmap scan](/images/TryHackMe/Expose/2_nmap_more_details.png)
 
@@ -129,7 +129,7 @@ https://<IP>:<port>/adminloginpage/index.php?username=<someusername>&password=<s
 ```
 This is an example as no website should send credentials in clear text.
 
-So… Here I was provided with names of this parameters: `file` or `view`. Such parameters could be exploited by path traversal vulnerability. This was also the case here. I just need to create a good attack. I decided to go for /etc/passwd file.
+So… Here I was provided with names of this parameters: `file` or `view`. Such parameters could be exploited by path traversal vulnerability. This was also the case here. I just need to create a good attack. I decided to go for `/etc/passwd` file.
 
 ```
 http://10.10.78.204:1337/file1010111/index.php?file=../../../../../etc/passwd
@@ -212,7 +212,7 @@ The one that look out of place is `/usr/bin/find` binary. It can be used to esca
 ./find . -exec /bin/sh -p \; -quit
 ```
 
-I achieved root privilege. Then I went straight for the flag in /root directory.
+I achieved root privilege. Then I went straight for the flag in `/root` directory.
 
 
 Root flag:
