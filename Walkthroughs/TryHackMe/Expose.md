@@ -63,7 +63,7 @@ Firstly, `/phpmyadmin` was a login page to database. I tried some bruteforcing b
 
 ![6. PhpMyAdmin login page](/images/TryHackMe/Expose/6_phpmyadmin_login_page.png)
 
-I decided to switch my focus onto second one of interest - `/admin`
+I decided to switch my focus onto second one of interest - `/admin`.
 
 ![7. Admin login page](/images/TryHackMe/Expose/7_admin_login_page.png)
 
