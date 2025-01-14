@@ -157,7 +157,9 @@ There is a place to upload files. Only .png and .jpg can be uploaded. I tried up
 
 ![17. upload_thm_1001 folder burp request capture](/images/TryHackMe/Expose/17_upload_thm_1001_burp_request_capture.png)
 
-As said in response after uploading a file I checked folder `/upload_thm_1001 folder`. I can see exacly that my file was uploded here.
+As said in response after uploading a file I checked folder `/upload-cv00101011/upload_thm_1001/`. I can see exacly that my file was uploded here.
+
+```http://10.10.195.148:1337/upload-cv00101011/upload_thm_1001/```
 
 ![18. upload_thm_1001 folder with my file](/images/TryHackMe/Expose/18_upload_thm_1001_folder_with_my_file.png)
 
@@ -166,7 +168,7 @@ If I could put a file with code which when executed will give me a shell then I 
 
 ![19. uploading shell and changing format with burp](/images/TryHackMe/Expose/19_uploading_shell_format_change_with_burp)
 
-Then I entered `/upload_thm_1001` where I could see my shell. Firstly, I set up listener on my host before I execute my shellcode so the connection could be made.
+Then I entered `/upload-cv00101011/upload_thm_1001/` where I could see my shell. Firstly, I set up listener on my host before I execute my shellcode so the connection could be made.
 
 ```
 nc -nlvp 4444
