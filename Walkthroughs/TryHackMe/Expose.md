@@ -206,7 +206,7 @@ find command for perm 4000 TO DO
 
 ![24. SUID binaries](/images/TryHackMe/Expose/24_suid_binaries.png)
 
-The one that look out of place is /usr/bin/find binary. It can be used to escalate privilege. I used GTFObins to achieve that. There are many instruction how to use different binaries that could be on victim machine which could be used to escalate privileges. Back to /usr/bin/find. By using below command:
+The one that look out of place is /usr/bin/find binary. It can be used to escalate privilege. I used [GTFObins](https://gtfobins.github.io/) to achieve that. There are many instruction how to use different binaries that could be on victim machine which could be used to escalate privileges. Back to /usr/bin/find. By using below command:
 
 ```
 ./find . -exec /bin/sh -p \; -quit
