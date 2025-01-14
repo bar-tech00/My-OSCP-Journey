@@ -211,7 +211,7 @@ find / -type f -perm -04000 -ls 2>/dev/null
 The one that look out of place is `/usr/bin/find` binary. It can be used to escalate privilege. I used [GTFObins](https://gtfobins.github.io/) to achieve that. There are many instruction how to use different binaries that could be on victim machine which could be used to escalate privileges. Back to `/usr/bin/find`. By using below command:
 
 ```
-./find . -exec /bin/sh -p \; -quit
+/usr/bin/find . -exec /bin/sh -p \; -quit
 ```
 
 I achieved root privilege. Then I went straight for the flag in `/root` directory.
