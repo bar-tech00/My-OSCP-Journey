@@ -11,7 +11,7 @@ Firstly, I started by scanning the host with nmap. Right away I scanned every po
 ```
 nmap -p- 10.10.78.204
 ```
-`-p-` - will scan all TCP ports
+`-p-` - will scan all TCP ports.
 
 ![1. First nmap scan](/images/TryHackMe/Expose/1_nmap_first.png)
 
@@ -20,9 +20,9 @@ I have discovered 5 opened ports. I will focus on them by specifying them in my 
 nmap -p 21,22,53,1337,1883 -sV -sC 10.10.78.204
 ```
 
-`-p <port1>,<port2>,<port n>` - will specify which port or ports we want to specify durning the scan
+`-p <port1>,<port2>,<port n>` - will specify which port or ports we want to specify durning the scan.
 
-`-sV` - Probe open ports to determine service/version info
+`-sV` - Probe open ports to determine service/version info.
 
 `-sC` - Performs a script scan using the default set of scripts. It is equivalent to --script=default. Some of the scripts in this category are considered intrusive and should not be run against a target network without permission.
 
@@ -46,7 +46,7 @@ There could be some additional resources like directories and files hosted there
 gobuster dir -u http://10.10.78.204:1337 -w /usr/share/wordlists/dirb/common.txt
 ```
 
-`dir` - Uses directory/file enumeration mode, typical option for enumerating other resources on a webpage
+`dir` - Uses directory/file enumeration mode, typical option for enumerating other resources on a webpage.
 
 `-u` - specifies what domain should be enumerated. I added port 1337 as this domain is hosted there. If it would be added then attack would not be conducted.
 
@@ -56,9 +56,8 @@ gobuster dir -u http://10.10.78.204:1337 -w /usr/share/wordlists/dirb/common.txt
 
 I have discovered additional resources which can be accessible. I have focused on two of those:
 
-`/admin`
-
-`/phpmyadmin`
+* `/admin`
+* `/phpmyadmin`
 
 Firstly, /phpmyadmin was a login page to database. I tried some bruteforcing but that led my nowhere.
 
@@ -102,7 +101,7 @@ sqlmap -r req -dump
 
 `-r` - the “-r” option tells sqlmap the file containing the HTTP request which contains the injection point.
 
-`-dump` - is used to "dump" (or more soficitaded word: exfiltrate) whole database from victims server
+`-dump` - is used to "dump" (or more soficitaded word: exfiltrate) whole database from victims server.
 
 ![11 sqlmap output](/images/TryHackMe/Expose/11_sqlmap_output.png)
 
@@ -113,7 +112,7 @@ Also, there was some information on other URI’s most probably also accessible 
 | url  | password |
 | ------------- | ------------- |
 | /file1010111/index.php  | 69c66901194a6486176e81f5945b8929 (easytohack)  |
-| /upload-cv00101011/index.php  | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z
+| /upload-cv00101011/index.php  | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z  |
 
 Firstly, I opened site `http://10.10.78.204:1337/file1010111/index.php` 
 
@@ -127,7 +126,6 @@ Great, I got access. Not much on this website from the first look, but text `Par
 
 ```
 https://<IP>:<port>/adminloginpage/index.php?username=<someusername>&password=<somepassword>
-
 ```
 This is an example as no website should send credentials in clear text.
 
