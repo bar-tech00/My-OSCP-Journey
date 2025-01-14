@@ -100,8 +100,9 @@ Then I used sqlmap command seen below. It asked me couple times to choose betwee
 sqlmap -r req -dump
 ```
 
-`-r` -
-`-dump` - 
+`-r` - the “-r” option tells sqlmap the file containing the HTTP request which contains the injection point.
+
+`-dump` - is used to "dump" (or more soficitaded word: exfiltrate) whole database from victims server
 
 ![11 sqlmap output](/images/TryHackMe/Expose/11_sqlmap_output.png)
 
