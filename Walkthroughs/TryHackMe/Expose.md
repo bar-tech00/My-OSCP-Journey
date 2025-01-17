@@ -86,7 +86,7 @@ http://10.10.195.148:1337/admin_101
 
 In the login form an email was provided: hacker@root.thm. This time the button “Continue” was clickable. I tried using some common passwords but this was not it. I decided to peep on the request that is being sent to the server and its response.
 
-![10. admin_101 response query](/images/TryHackMe/Expose/10_admin_101_response_query.png)
+![10. admin_101 response query](/images/TryHackMe/Expose/10_admin_101_response_sql_query.png)
 
 In the response a SQL query can be seen. I tired to use some bruteforcing using BurpSuite (can be also achived by. ex. hydra) but no success there. I decided on using sqlmap. I tried using sqlmap in different ways, but the one below worked. Firstly, I saved HTTP request which would be send to the server in a file I called `req`. The request I'm talking about is on the left side of the upper image.
 
