@@ -1,3 +1,5 @@
+# Light CTF Walkthrough
+
 This walkthrough will guide you through solving the TryHackMe room called Light. The room focuses on exploiting SQL injection vulnerabilities and learning how to extract sensitive information from a database. Below, I provide the steps I took, insights gained, and the queries I used to solve the challenges in this room.
 
 Firstly, I started with scanning the victim host with `nmap`, but this was not needed in this task. The open port 22 for SSH connections was meant to misdirect users during this exercise. Because of that I'm not going to post any screenshots of typical enumeration with `nmap` here. I tried brute forcing SSH but with no success. With this walkthrough I'm just gonna go straight for the database.
