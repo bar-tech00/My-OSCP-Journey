@@ -80,7 +80,7 @@ Now I know that there are two records In the table. One method that could be use
 ![9. Admin username](/images/TryHackMe/Light/9_admin_username.png)
 
 
-If you don't understand this query and how ‘WHERE’ and ‘LIKE’ operators work then you need to read on your own - that's how we learn! Also, this is not a place where I am focusing on explaining exactly how SQL queries are created and how they work.
+If you don't understand this query and how `WHERE` and `LIKE` operators work then you need to read on your own - that's how we learn! Also, this is not a place where I am focusing on explaining exactly how SQL queries are created and how they work.
 
 This is an answer to the first question.
 
@@ -105,7 +105,7 @@ What is the password to the username mentioned in question 1?
 mamZtAuMlrsEy5bp6q17
 ```
 
-If there are two records in the table and I know one of them I can just create a reverse query by asking for a username that is not a username of  TryHackMeAdmin. To do that I will use ‘NOT LIKE’ operator. 
+If there are two records in the table and I know one of them I can just create a reverse query by asking for a username that is not a username of  TryHackMeAdmin. To do that I will use `NOT LIKE` operator. 
 
 ```
 ' unioN Select username FROM admintable WHERE username NOT LIKE 'TryHackMeAdmin
