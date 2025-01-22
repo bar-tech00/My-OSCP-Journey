@@ -41,7 +41,7 @@ I looked for SQLite-specific commands to identify the table names. This [helpful
 SELECT name FROM sqlite_master WHERE type = 'table
 ```
 
-Is a way to go. I just need to tailor it for my needs. Based on what I learned so far I create below query:
+Upper command is a way to go. I just need to tailor it for my needs. Based on what I learned so far I create below query:
 
 ```
 ' unioN Select name FROM sqlite_master WHERE type='table
