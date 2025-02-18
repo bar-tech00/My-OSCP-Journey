@@ -14,15 +14,12 @@ nmap -sC -sV 10.10.116.177
 ![1. First nmap scan](/images/TryHackMe/RootMe/1_nmap_first.png)
 
 Question: Scan the machine, how many ports are open?
-
 Answer: 2
 
 Question: What version of Apache is running?
-
 Answer: 2.4.29
 
 Question: What service is running on port 22?
-
 Answer: SSH
 
 
