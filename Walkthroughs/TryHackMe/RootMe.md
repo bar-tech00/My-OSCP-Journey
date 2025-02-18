@@ -13,17 +13,19 @@ nmap -sC -sV 10.10.116.177
 
 ![1. First nmap scan](/images/TryHackMe/RootMe/1_nmap_first.png)
 
-^Question^: Scan the machine, how many ports are open?
+**Question**: Scan the machine, how many ports are open?
 
-Answer: 2
+**Answer**: 2
 
-Question: What version of Apache is running?
 
-Answer: 2.4.29
+**Question**: What version of Apache is running?
 
-Question: What service is running on port 22?
+**Answer**: 2.4.29
 
-Answer: SSH
+
+**Question**: What service is running on port 22?
+
+**Answer**: SSH
 
 
 I discovered two running services on ports `22` which is SSH and `80` which is http server. Since SSH is usually not the first attack vector in CTF challenges, I focused on the web server. Upon visiting the website, I found a simple page with no immediately interesting content.
@@ -44,9 +46,9 @@ The scan uncovered nine resources, though some returned `403 Forbidden` errors. 
 *`/uploads`
 
 
-Question: What is the hidden directory?
+**Question**: What is the hidden directory?
 
-Answer: /panel/
+**Answer**: /panel/
 
 
 Navigating to `/panel/`, I found an upload page.
@@ -90,9 +92,9 @@ The flag was located in `/var/www/user.txt`.
 ![9. User flag](/images/TryHackMe/RootMe/9_user_flag.png)
 
 
-Question: user.txt
+**Question**: user.txt
 
-Answer: THM{y0u_g0t_a_sh3ll}
+**Answer**: THM{y0u_g0t_a_sh3ll}
 
 
 To escalate privileges, I searched for binaries with the SUID bit set:
@@ -121,6 +123,6 @@ The flag was found in `/root/root.txt`, which I read using `cat`.
 ![11. Root flag](/images/TryHackMe/RootMe/11_root_flag.png)
 
 
-Question: root.txt
+**Question**: root.txt
 
-Answer: THM{pr1v1l3g3_3sc4l4t10n}
+**Answer**: THM{pr1v1l3g3_3sc4l4t10n}
