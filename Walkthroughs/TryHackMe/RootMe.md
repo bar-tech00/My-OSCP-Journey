@@ -13,7 +13,7 @@ nmap -sC -sV 10.10.116.177
 
 ![1. First nmap scan](/images/TryHackMe/RootMe/1_nmap_first.png)
 
-*Question*: Scan the machine, how many ports are open?
+^Question^: Scan the machine, how many ports are open?
 
 Answer: 2
 
