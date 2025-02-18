@@ -9,7 +9,6 @@ I began by scanning the target machine using `nmap`. I included the `-sV` switch
 
 ```
 nmap -sC -sV 10.10.116.177
-
 ```
 
 ![1. First nmap scan](/images/TryHackMe/RootMe/1_nmap_first.png)
