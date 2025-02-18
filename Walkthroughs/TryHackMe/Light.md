@@ -15,7 +15,9 @@ If this is an exercise on SQL injections, it means that the database will be vul
 
 This output provided me with really helpful information and insight into how the command is created on the database side. The query seems to be something like this:
 
-`SELECT password FROM table WHERE username='user_input' LIMIT 30`
+```
+SELECT password FROM table WHERE username='user_input' LIMIT 30
+```
 
 Unfortunately, I didn’t check in the browser what this error could mean. If I had, it wouldn’t have taken me as long as it did. In this walkthrough, I’ll jump straight into the error and explain how it was useful for my later penetration testing.
 Firstly, I assumed this was a MySQL database and attempted to gather information using MySQL commands. However, after searching for this error, I found the following article:
