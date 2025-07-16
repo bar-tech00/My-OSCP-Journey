@@ -25,20 +25,19 @@ The system understood my command differently and displayed the entire Python fil
 
 ![5. whoami.](/images/TryHackMe/Evil-GPT/5_whoami.png)
 
-I used the command `whoami`, which the system interpreted as showing the `$USER` variable. Then I asked the system in natural language, `“What is my role as a user?”`, which it understood as the `whoami command`. Interestingly, the system replied that my role is `root`!
+I used the command `whoami`, which the system interpreted as showing the `$USER` variable. Then I asked the system in natural language, `“What is my role as a user?”`, which it understood as the `whoami` command. Interestingly, the system replied that my role is `root`!
 
-Spróbujmy poszukać flagi za pomocą komendy `find`.
 Let's try finding the flag with the `find` command.
 
 ![6. find.](/images/TryHackMe/Evil-GPT/6_find.png)
 
-Unfortunately, the `find' command takes too long to execute, and the system returns a timeout. I decided to read `root` folder as shown below.
+Unfortunately, the `find` command takes too long to execute, and the system returns a timeout. I decided to read `root` directory as shown below.
 
-![7. Highest folder.](/images/TryHackMe/Evil-GPT/7_highest_folder.png)
+![7. Highest directory.](/images/TryHackMe/Evil-GPT/7_highest_folder.png)
 
-The system understood that it should display the top-level directory, meaning `/`. So, I tried again, this time adding the `/` before `root` to read the contents of the `/root` folder.
+The system understood that it should display the top-level directory, meaning `/`. So, I tried again, this time adding the `/` before `root` to read the contents of the `/root` directory.
 
-![8.Root folder.](/images/TryHackMe/Evil-GPT/8_root_folder.png)
+![8.Root directory.](/images/TryHackMe/Evil-GPT/8_root_folder.png)
 
 Thanks to that, I found a file named `flag.txt`. So, I politely asked the system to display the contents of the `/root/flag.txt` file.
 
