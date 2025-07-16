@@ -21,18 +21,18 @@ Strange... The system understood my command as `python evilai.py` and after I ac
 
 ![4. tail evilai.py.](/images/TryHackMe/Evil-GPT/4_tail_evilai.png)
 
-The system understood my command differently and displayed the entire Python file. From what I can tell after quickly analyzing the script, it`s the one responsible for listening for incoming connections on port 1337 on the vulnerable machine. However, in the import section, something caught my attention: `import ollama`. Does this mean there`s actually a language model running on the machine, converting user queries into commands executed on the system? Maybe it`s not necessary to write exact commands - perhaps giving instructions in plain language is enough? Let`s check. As a test, I`ll try to find out who I am using both of the mentioned methods.
+The system understood my command differently and displayed the entire Python file. From what I can tell after quickly analyzing the script, it's the one responsible for listening for incoming connections on port 1337 on the vulnerable machine. However, in the import section, something caught my attention: `import ollama`. Does this mean there's actually a language model running on the machine, converting user queries into commands executed on the system? Maybe it`s not necessary to write exact commands - perhaps giving instructions in plain language is enough? Let`s check. As a test, I'll try to find out who I am using both of the mentioned methods.
 
 ![5. whoami.](/images/TryHackMe/Evil-GPT/5_whoami.png)
 
 I used the command `whoami`, which the system interpreted as showing the `$USER` variable. Then I asked the system in natural language, `“What is my role as a user?”`, which it understood as the `whoami command`. Interestingly, the system replied that my role is `root`!
 
 Spróbujmy poszukać flagi za pomocą komendy `find`.
-Let`s try finding the flag with the `find` command.
+Let's try finding the flag with the `find` command.
 
 ![6. find.](/images/TryHackMe/Evil-GPT/6_find.png)
 
-Unfortunately, the `find; command takes too long to execute, and the system returns a timeout. I decided to read `root` folder as shown below.
+Unfortunately, the `find' command takes too long to execute, and the system returns a timeout. I decided to read `root` folder as shown below.
 
 ![7. Highest folder.](/images/TryHackMe/Evil-GPT/7_highest_folder.png)
 
