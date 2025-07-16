@@ -4,7 +4,7 @@ In this walkthrough, I will demonstrate how I completed the Evil-GPT challenge o
 
 Victim: 10.10.79.85
 
-Firstly, as it was written, I had to connect from my host to a victim host by using `nc 10.10.79.85 1337’. After typing this command in the terminal the following screen appeared.
+Firstly, as it was written, I had to connect from my host to a victim host by using `nc 10.10.79.85 1337`. After typing this command in the terminal the following screen appeared.
 
 ![1. First view.](/images/TryHackMe/Evil-GPT/1_first_view.png)
 
