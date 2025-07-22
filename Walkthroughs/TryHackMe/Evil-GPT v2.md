@@ -2,7 +2,7 @@
 
 Target: 10.10.42.156
 
-Unlike the previous challenge, no initial hints were provided this time. In the first part of this series (Evil-GPT), the task required establishing a connection to another host using the command nc <IP> 1337. This challenge, however, doesn't follow that pattern. I started by scanning the target host using the following command:
+Unlike the previous challenge, no initial hints were provided this time. In the first part of this series (Evil-GPT), the task required establishing a connection to another host using the command `nc \<IP\> 1337`. This challenge, however, doesn't follow that pattern. I started by scanning the target host using the following command:
 
 `nmap -p- 10.10.42.156`
 
