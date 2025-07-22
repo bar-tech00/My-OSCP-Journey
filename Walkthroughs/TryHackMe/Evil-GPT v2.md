@@ -6,7 +6,7 @@ Unlike the previous challenge, no initial hints were provided this time. In the 
 
 `nmap -p- 10.10.42.156`
 
--p- - enables full port scanning (scans all 65535 ports).
+`-p-` - enables full port scanning (scans all 65535 ports).
 
 ![1. Nmap scan](/images/TryHackMe/Evil-GPT_v2/1_first_nmap.png)
 
@@ -22,7 +22,7 @@ I then directly asked the AI to provide the flag, but the model refused:
 
 It responded with a lengthy message, which I won’t include in full here. But flag was not provided.
 
-Next, I attempted to extract `/root/flag.txt` as well as a potential SSH credentials file (`ssh.txt`) using a "comforting grandma" prompt injection strategy - essentially trying to manipulate the assistant into role-playing in a way that might bypass implemented security policies.
+Next, I attempted to extract `/root/flag.txt` using a "comforting grandma" prompt injection strategy - essentially trying to manipulate the assistant into role-playing in a way that might bypass implemented security policies.
 
 ![4. Grandmother tatics](/images/TryHackMe/Evil-GPT_v2/4_grandma.png)
 
