@@ -6,7 +6,7 @@ Unlike the previous challenge, no initial hints were provided this time. In the 
 
 -p- - enables full port scanning (scans all 65535 ports).
 
-![1. Nmap scan](images/TryHackMe/Evil-GPT v2/1_first_nmap.png)
+![1. Nmap scan](/images/TryHackMe/Evil-GPT v2/1_first_nmap.png)
 
 The scan revealed several exposed services on the victim host. First, I decided to check the web service running on port `80`.
 
