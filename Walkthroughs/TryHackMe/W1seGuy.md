@@ -50,6 +50,7 @@ In the first section, I declare all necessary variables:
 * `realkey` will store the final key once it's discovered.
 * `all_possible_4_char_keys_list` is a list that will store all 4-character key combinations (we’ll explain why just 4 characters are enough in the next section).
 
+Note: If you would like to use my code you need to insert the value you received in the banner for `msg_encoded_hexed` variable.
 
 Part 2: Generating 4-character key candidates
 ```
