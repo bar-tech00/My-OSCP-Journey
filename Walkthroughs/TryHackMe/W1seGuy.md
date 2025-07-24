@@ -92,6 +92,18 @@ for i in possible_chars_list:
 ```
 In this section, I focus on discovering the fifth (last) character of the key. We already know the last character of the flag is `}`, and due to the nature of the encryption (with modulo wrapping), the last character of the ciphertext corresponds to this flag character encrypted with the last key character. To find the correct one, I XOR the `}` with every possible character from `possible_chars_list`, encode it, convert it to hex, and compare it with the last two characters of the encrypted message. If it matches, we’ve found the missing character and can now reconstruct the full 5-character key.
 
+It is easier to undersand it while looking at below matrix based on the ciphertext shown in banner:
+```
+# 15 04 22 0a 04
+# 70 2d 03 1f 00
+# 04 34 1b 30 00
+# 35 78 0c 1a 17
+# 00 22 1d 42 15
+# 2d 00 16 19 21
+# 33 38 16 41 01
+# 33 34 20 03 09
+```
+
 Part 5: Decrypting the full message
 ```
 # Deciphering the message
