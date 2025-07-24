@@ -3,9 +3,9 @@
 Target: 10.10.178.10
 
 At the beginning of the challenge, as suggested in the task, I downloaded the file from the “Task Files” section. This file contained a Python script, which I opened in a text editor and analyzed. I recommend reviewing the code yourself to understand the logic better. Here are some crucial takeaways from the script:
-* The code is executed on the target machine and sets up a server, which we can connect to — this becomes evident later when we connect using `netcat`.
+* The code is executed on the target machine and sets up a server, which we can connect to - this becomes evident later when we connect using `netcat`.
 * The script contains an example of how a flag should look. It uses: `THM{thisisafakeflag}`. This suggests the real flag will likely follow the same format: starting with `THM{` and ending with `}`. This will become very useful later. In fact, most TryHackMe flags follow this format.
-* We can also observe how the encryption key is generated — it consists of uppercase letters, lowercase letters, and digits, and is 5 characters long:
+* We can also observe how the encryption key is generated - it consists of uppercase letters, lowercase letters, and digits, and is 5 characters long:
   ```
   res = ''.join(random.choices(string.ascii_letters + string.digits, k=5))
   key = str(res)
@@ -21,7 +21,7 @@ At the beginning of the challenge, as suggested in the task, I downloaded the fi
   hex_encoded = xored.encode().hex()
   ```
 
-Let’s now connect to the target using the hint provided in the task — port 1337:
+Let’s now connect to the target using the hint provided in the task - port 1337:
 ```
 nc 10.10.178.10 1337
 ```
@@ -61,7 +61,7 @@ for i in possible_chars_list:
                     new_key = i+j+a+b
                     all_possible_4_char_keys_list.append(new_key)
 ```
-In this step, I generate all possible 4-character keys. Even though the original key is 5 characters long, I only generate 4-character combinations. Why? Because we only know the first 4 characters of the flag -> `THM{)`, and looking at the encryption algorithm, it performs a modular operation `(i % len(key)`. This means the key wraps around during encryption. Therefore, the fifth character of the key doesn't influence the encryption of the first 4 characters of the flag. This optimization significantly reduces the total number of key combinations — skipping the fifth character cuts down our search space by a factor of 62.
+In this step, I generate all possible 4-character keys. Even though the original key is 5 characters long, I only generate 4-character combinations. Why? Because we only know the first 4 characters of the flag -> `THM{)`, and looking at the encryption algorithm, it performs a modular operation `(i % len(key)`. This means the key wraps around during encryption. Therefore, the fifth character of the key doesn't influence the encryption of the first 4 characters of the flag. This optimization significantly reduces the total number of key combinations - skipping the fifth character cuts down our search space by a factor of 62.
 
 Part 3: Finding the first 4 characters of the key
 ```
