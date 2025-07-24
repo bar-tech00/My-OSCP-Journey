@@ -27,7 +27,7 @@ nc 10.10.178.10 1337
 ```
 Once connected, a banner is displayed showing the encrypted message and explaining the operations applied to it. This is the message we’ll need to decrypt.
 
-[1. Banner](/images/TryHackMe/W1seGuy/1_banner.png)
+![1. Banner](/images/TryHackMe/W1seGuy/1_banner.png)
 
 I believe we now have everything we need to solve this challenge. My plan was to write a Python script that would reverse the encryption to recover the original message.
 
@@ -111,12 +111,12 @@ Now that we’ve recovered the full 5-character key, we can proceed to decrypt t
 
 Upon execution above code I received the first flag.
 
-[2. First flag](/images/TryHackMe/W1seGuy/2_first_flag.png)
+![2. First flag](/images/TryHackMe/W1seGuy/2_first_flag.png)
 
 Flag: THM{p1alntExtAtt4ckcAnr3alLyhUrty0urxOr}
 
 Now that we know the key which was used for encryption we can answer the question asked in the banner. After submiting the found key we recive the second flag.
 
-[3. Second flag](/images/TryHackMe/W1seGuy/3_second_flag.png)
+![3. Second flag](/images/TryHackMe/W1seGuy/3_second_flag.png)
 
 Flag: THM{BrUt3_ForC1nG_XOR_cAn_B3_FuN_nO?}
